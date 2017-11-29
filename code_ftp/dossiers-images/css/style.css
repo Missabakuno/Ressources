@@ -1,0 +1,98 @@
+
+
+body {
+background-color:#ed8f4b;
+
+}
+
+
+
+h1 {
+ color: #e87b2e;
+    font-family: "Raleway", sans-serif;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+h2 {
+  color: #f79956;
+    font-family: "Muli", sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+h4 {
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+}
+#liens ul {
+  
+list-style:none;
+}
+
+#liens a:link{
+ font-family: "Muli", sans-serif;
+color: darkorange;
+  text-decoration: none;
+}
+
+/* visited link */
+#liens a:visited {
+    color: #e87b2e;
+     text-decoration: none;
+}
+
+h4 {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+}
+
+#return a:link{
+     color:#ed8f4b;
+
+    text-decoration: none;
+}
+
+#return a:visited{
+   color:#ed8f4b;
+    text-decoration: none;
+}
+
+ul li{
+	margin-bottom: 10px;
+}
+
+img{
+  width: 50%;
+  margin-left: 25%;
+}
+
+
+#wrapper{
+background-color: #FFBA52;
+width:60%;
+position: absolute;
+top:5%;
+left: 27.5%;
+margin-left: -120px;
+padding: 10px;
+ border-radius: 10px;
+}
+
+#article {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+ #top {
+position: fixed;
+bottom: 2%;
+right: 2%;
+ font-family: "Muli", sans-serif;
+}
+
+#top a {
+  text-decoration: none;
+    color: #e87b2e;
+
+}

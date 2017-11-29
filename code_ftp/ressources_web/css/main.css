@@ -1,0 +1,87 @@
+*{
+  margin: 0;
+  padding: 0;
+}
+
+@font-face{
+  font-family: 'hack';
+  src: url('fonts/hack/hack-regular-webfont.ttf');
+}
+
+@font-face{
+  font-family: 'hack-bold';
+  src: url('fonts/hack/hack-bold-webfont.ttf');
+}
+
+body{
+  font-family: 'hack';
+}
+
+h2{
+  font-family: 'hack-bold';
+
+}
+
+
+img{
+  width: 10%;
+}
+
+
+article{
+  background: red;
+  border: 5px solid blue;
+  padding: 40px;
+  margin: 50px;
+}
+
+h1{
+  position: fixed;
+  background: white;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 15;
+}
+
+article img{
+  float: left;
+  margin: 5px;
+
+}
+
+article {
+  background: yellow;
+}
+
+article h2{
+  background: red;
+}
+
+article span{
+  background: tomato;
+  display: inline-block;
+  width: 200px;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/*fgzegez*/

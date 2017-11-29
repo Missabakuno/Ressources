@@ -1,0 +1,131 @@
+body {
+background-color: #801515;
+
+}
+
+h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: "Muli", sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+h3{
+ font-family: "Muli", sans-serif;
+color: #c44c4c;
+	text-decoration: underline;
+}
+
+h4 {
+    font-family: "Raleway", sans-serif;
+    font-size: 20px;
+}
+
+#return a:link{
+     color: #801515;
+
+    text-decoration: none;
+}
+
+#return a:visited{
+   color: #801515;
+
+    text-decoration: none;
+}
+
+
+p{
+  text-align: justify;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+img{
+  width: 15%;
+  margin-right: 2.5%;
+}
+
+#wrapper{
+background-color: #FFAAAA;
+width:60%;
+position: absolute;
+top:5%;
+left: 27.5%;
+margin-left: -120px;
+padding: 10px;
+ border-radius: 10px;
+}
+
+#article {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+#conseil {
+	font-style: italic;
+}
+
+#Menu {
+background-color: #D46A6A;
+width : 15%;
+position: fixed;
+top: 5%;
+right: 2%;
+border-radius: 10px;
+}
+
+#Menu h2 {
+  margin-top: 2px;
+  color: black;
+  text-align: right;
+  padding-right: 2%;
+
+}
+
+#Menu p {
+ margin-left: 12px;
+   margin-right: 12px;
+  margin-top: -6px;
+  text-align: justify;
+}
+
+#Menu a {
+
+  font-family: "Roboto Condensed", sans-serif;
+  font-size: 10px;
+  text-decoration: none;
+}
+
+#Menu a:link {
+    color: #FFAAAA;
+     text-decoration: none;
+}
+
+/* visited link */
+#Menu a:visited {
+    color: #550000;
+     text-decoration: none;
+}
+
+/* mouse over link */
+#Menu a:hover {
+    color: black;
+     text-decoration: none;
+}
+
+#top {
+position: fixed;
+bottom: 2%;
+right: 2%;
+ font-family: "Muli", sans-serif;
+}
+
+#top a {
+  text-decoration: none;
+    color: black;
+
+}

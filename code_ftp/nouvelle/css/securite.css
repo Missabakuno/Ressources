@@ -1,0 +1,66 @@
+body {
+background-color: #801515;
+
+}
+
+h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: "Muli", sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+
+h4 {
+    font-family: "Raleway", sans-serif;
+    font-size: 15px;
+}
+
+#return a:link{
+     color: #801515;
+
+    text-decoration: none;
+}
+
+#return a:visited{
+   color: #801515;
+
+    text-decoration: none;
+}
+
+
+p{
+  text-align: justify;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+
+#wrapper{
+background-color: #FFAAAA;
+width:60%;
+position: absolute;
+top:5%;
+left: 27.5%;
+margin-left: -120px;
+padding: 10px;
+ border-radius: 10px;
+}
+
+
+input[type=button] {
+	background-color: #801515;
+    color:#FFAAAA;
+    font:2.4em Futura, ‘Century Gothic’, AppleGothic, sans-serif;
+    font-size:70%;
+    /* ... other rules ... */
+    cursor:pointer;
+}
+
+input[type=button]:hover {
+    background-color:#c44c4c;
+}

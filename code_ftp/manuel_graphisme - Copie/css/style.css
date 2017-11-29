@@ -1,0 +1,108 @@
+body {
+background-color: gray;
+
+}
+
+h1 {
+    font-family: "Raleway", sans-serif;
+    font-size: 34px;
+    margin-bottom: 20px;
+}
+
+h2 {
+    font-family: "Muli", sans-serif;
+    font-size: 20px;
+    margin-bottom: 20px;
+}
+
+h3{
+ font-family: "Muli", sans-serif;
+color: #c44c4c;
+	text-decoration: underline;
+}
+
+h4 {
+    font-family: "Raleway", sans-serif;
+    font-size: 18px;
+}
+
+#return a:link{
+     color: gray;
+
+    text-decoration: none;
+}
+
+#return a:visited{
+   color: gray;
+
+    text-decoration: none;
+}
+
+
+#wrapper p{
+  text-align: justify;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+#wrapper{
+background-color: lightgray;
+width:60%;
+position: absolute;
+top:5%;
+left: 27.5%;
+margin-left: -120px;
+padding: 10px;
+ border-radius: 10px;
+}
+
+#article {
+  margin-right: 10%;
+  margin-left: 10%;
+}
+
+#texteslongs {
+  width:60%;
+}
+
+
+
+#box {
+background-color: #ebecf1;
+width : 23%;
+position: absolute;
+top: 28%;
+right: 20.5%;
+border-radius: 10px;
+}
+
+#box h4 {
+  margin-top: 14px;
+  margin-left: 10px;
+  text-decoration: underline;
+}
+
+#box p {
+  margin-left: 10px;
+  margin-top: -6px;
+  text-align: justify;
+    font-family: "Roboto Condensed", sans-serif;
+}
+
+#box img{
+  width: 22.5%;
+  margin-left: 130px;
+  margin-right:100px;
+}
+
+#top {
+position: fixed;
+bottom: 2%;
+right: 2%;
+ font-family: "Muli", sans-serif;
+}
+
+#top a {
+  text-decoration: none;
+    color: darkgray;
+
+}
