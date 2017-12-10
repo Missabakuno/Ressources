@@ -48,6 +48,7 @@ text-decoration: underline;
 
 #wrapper ul {
 font-family: "Roboto Condensed", sans-serif;
+
 }
 
 #wrapper ul li{  
@@ -75,6 +76,12 @@ font-size: 15px;
 
 #article p{
   text-align: justify;
+}
+
+#article p > ul li {
+    text-align: justify;
+font-family: "Muli", sans-serif;
+background-color: red;
 }
 
  /* unvisited link */

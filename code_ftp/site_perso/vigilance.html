@@ -21,7 +21,7 @@
     <div id="wrapper">
 
 
-      <nav role="off-canvas">
+     <nav role="off-canvas">
         <ul class= "navi">
   
       <li><a href="index.html"> A propos </a> </li>
@@ -39,18 +39,99 @@
              <li> <a href="insta/corpus.html"> Installation: Corpus </a> </li>
              <li> <a href="insta/mandragores.html"> Installation: Mandragores </a> </li>
           </ul>   </li>
-      <li><a href="CV.html"> CV </a> </li>
-      <li><a href="contact.html"> Contact </a> </li>
+      <li><a href="#">  CV </a> </li>
+      <li><a href="#"> Contact </a> </li>
 </ul>  
       </nav>
 
 <div id ="article">
   <h1>Application : Vigilance</h1>
-      <h2 id ="propos"> Intro</h2>
+      <h2 id ="intro"> Intro</h2>
+<hr> </hr>
+
+<p>      
+Pour l'atelier Arts Numériques, on m'a demandé de réaliser une œuvre en rapport avec un livre (ou autre ouvrage). </p>
+<p>      
+
+<i> <o> Psycho-Pass, Inspector Akane Tsunemori </o> </i> <a id ="menubutton" href="#1"> (1) </a> de Gen Urobuchi. </p> 
+<p>Genre : fiction utopique et dystopique, policier, cyberpunk, thriller, psychologique</p>
+
+
+<p> <b> Résumé :</b></p>      
+<p>
+Dans un avenir proche (2112) , il est possible de mesurer instantanément et de quantifier l'état psychologique - appelé <b> <o> Psycho-Pass </o> </b> - de chaque citoyen grâce à une nouvelle technologie : le Dominator. Cette arme spéciale a été mise au point par le système Sibyl afin de minimiser les crimes. Akane Tsunemori, sortie première de sa promotion, est engagée dans les rangs de la Section d'Investigation Criminelle en tant qu'inspectrice. C'est avec l'aide de criminels latents qu'Akane doit enquêter sur des crimes et devancer les criminels potentiels avant qu'ils ne passent à l'acte. </p>
+<p>      
+
+Ce manga met en scène les dérives du contrôle total via des systèmes numériques tels que des caméras de surveillances situées à chaque coin de rue, des algorithmes de reconnaissance faciale, des drones de sécurité qui patrouillent les rues, .... et surtout, le <b> <o> Système Sibyl </o> </b> : un système qui permet de juger l'état psychologique des gens avant même qu'ils n'aient commis le moindre crime. Le résultat de ce jugement a pour nom , <i> Psycho-Pass </i>, <i> facteur criminel </i> , ou simplement <i> "couleur"</i> .</p>
+
+<h2 id ="but"> But </h2>
+<hr> </hr>
+
+<p>      
+
+Mon but est de "reproduire" le Système Sibyl en une application mobile, permettant ainsi aux utilisateurs d'<b><o>Android </o> </b> de connaitre leur "couleur", correspondant à leur état psychologique du moment. Le but étant de rendre accessible au public ce qui, dans la société du manga Psycho-Pass, est réservé aux forces de l'ordre et au gouvernement. </p>
+<p>      
+
+L'application demande l'accès à la caméra de l'appareil, afin de détecter la couleur au centre du champs de vision. Cette couleur détermine le facteur criminel de l'utilisateur ou de la personne testée par l'utilisateur et applique alors un diagramme en bâtons lié au résultat obtenu. Deux bâtons : le niveau de stress et la balance émotionnelle.</p>
+
+<h2 id ="niv"> Niveaux</h2>
+<hr> </hr>
+
+<p>      
+
+Il existe 3 niveau au coefficient du facteur criminel : <ul id ="">
+<li>Moins de 100 : la personne n'est pas une cible. Le Dominator ce bloque automatiquement.</li>
+<li>Entre 100 et 299 : la personne est considérée comme étant un criminel latent et est une cible pour les forces de l'ordre. Le Dominator passe en mode Paralysie Non-Létale. </li>
+<li>Plus de 300 : la personne pose un risque pour la société. Le Dominator passe en mode Élimination Létale.</li>
+</ul>
+</p>
+<p>      
+
+Selon ces niveaux, l'application réagit différemment : 
+Moins de 100 : un message affiche ceci : "Votre couleur est *nom de la couleur*, votre teinte est claire. Passez une bonne journée."
+Entre 100 et 299 : "Votre facteur criminel est au dessus de la normale. Nous vous recommandons de suivre une thérapie dans les plus brefs délais. "
+Plus de 300 : "Votre facteur est hors normes. Les autorités compétentes ont été prévenues de votre localisation. Veuillez rester où vous êtes." </p>
+
+<h2 id ="fonct"> Fonctionnement</h2>
+<hr> </hr>
+
+<p>      
+
+Pour le moment, mon système fonctionne avec Processing, mais je ne parviens pas à l'exporter en application. C'est pourquoi je recommences ce projet en projet android.studio. J'ai déjà le code qui permet d'accéder à la caméra de mon appareil.</p>
+
+      
+
+
 
 
 
     </div>
+
+
+
+<div id = "notes" > 
+
+<h2>Notes</h2>
+<hr> </hr>
+
+<p>     
+ 
+<ul> 
+  <li> <a id= "1"> (1) </a> <a href = "https://fr.wikipedia.org/wiki/Psycho-Pass">  https://fr.wikipedia.org/wiki/Psycho-Pass </a>  </li>
+  <li> <a id =""> () </a> <a href =""> </a> </li>
+<li> <a id =""> () </a> <a href =""> </a> </li>
+<li> <a id =""> () </a> <a href =""> </a> </li>
+<li> <a id =""> () </a> <a href =""> </a> </li>
+<li> <a id =""> () </a> <a href =""> </a> </li>
+<li> <a id =""> () </a> <a href =""> </a> </li>
+
+</ul>
+
+</p>
+</div>
+
+
+
 
 
 <div id = "Menu" > 
@@ -60,10 +141,10 @@
 <p>     
  
 <ul> 
-  <li> <a id ="menubutton" href="#vigi"> Application: Vigilance </a> </li>
-  <li> <a id ="menubutton" href="#newb">  Conférence: New Body  </a> </li>
-  <li> <a id ="menubutton" href="#corp">  Installation: Corpus  </a> </li>
-  <li> <a id ="menubutton" href="#mand">  Installation: Mandragores  </a> </li>
+  <li> <a id ="menubutton" href="#intro"> Intro </a> </li>
+  <li> <a id ="menubutton" href="#but"> But </a> </li>
+  <li> <a id ="menubutton" href="#niv">  Niveaux </a> </li>
+  <li> <a id ="menubutton" href="#fonct">  Fonctionnement  </a> </li>
   <li> <a id ="menubutton" href="#">  </a> </li>
 </ul>
 
