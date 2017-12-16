@@ -59,7 +59,7 @@ Pour l'atelier Arts Numériques, on m'a demandé de réaliser une œuvre en rapp
 
 <p> <b> Résumé :</b></p>      
 <p>
-Dans un avenir proche (2112) , il est possible de mesurer instantanément et de quantifier l'état psychologique - appelé <b> <o> Psycho-Pass </o> </b> - de chaque citoyen grâce à une nouvelle technologie : le Dominator. Cette arme spéciale a été mise au point par le système Sibyl afin de minimiser les crimes. Akane Tsunemori, sortie première de sa promotion, est engagée dans les rangs de la Section d'Investigation Criminelle en tant qu'inspectrice. C'est avec l'aide de criminels latents qu'Akane doit enquêter sur des crimes et devancer les criminels potentiels avant qu'ils ne passent à l'acte. </p>
+Dans un avenir proche (2112) , il est possible de mesurer instantanément et de quantifier l'état psychologique (appelé <b> <o> Psycho-Pass </o> </b>) de chaque citoyen grâce à une nouvelle technologie : le Dominator.<a id ="menubutton" href="#2"> (2) </a> Cette arme spéciale a été mise au point par le système Sibyl afin de minimiser les crimes. Akane Tsunemori, sortie première de sa promotion, est engagée dans les rangs de la Section d'Investigation Criminelle en tant qu'inspectrice. C'est avec l'aide de criminels latents qu'Akane doit enquêter sur des crimes et devancer les criminels potentiels avant qu'ils ne passent à l'acte. </p>
 <p>      
 
 Ce manga met en scène les dérives du contrôle total via des systèmes numériques tels que des caméras de surveillances situées à chaque coin de rue, des algorithmes de reconnaissance faciale, des drones de sécurité qui patrouillent les rues, .... et surtout, le <b> <o> Système Sibyl </o> </b> : un système qui permet de juger l'état psychologique des gens avant même qu'ils n'aient commis le moindre crime. Le résultat de ce jugement a pour nom , <i> Psycho-Pass </i>, <i> facteur criminel </i> , ou simplement <i> "couleur"</i> .</p>
@@ -79,30 +79,345 @@ L'application demande l'accès à la caméra de l'appareil, afin de détecter la
 
 <p>      
 
-Il existe 3 niveau au coefficient du facteur criminel : <ul id ="">
-<li>Moins de 100 : la personne n'est pas une cible. Le Dominator ce bloque automatiquement.</li>
-<li>Entre 100 et 299 : la personne est considérée comme étant un criminel latent et est une cible pour les forces de l'ordre. Le Dominator passe en mode Paralysie Non-Létale. </li>
-<li>Plus de 300 : la personne pose un risque pour la société. Le Dominator passe en mode Élimination Létale.</li>
-</ul>
+Il existe 3 niveau au coefficient du facteur criminel : <ol>
+<li> <b> Moins de 100 :</b> la personne n'est pas une cible. Le Dominator se bloque automatiquement.</li>
+<li> <b> Entre 100 et 299 :</b> la personne est considérée comme étant un criminel latent et est une cible pour les forces de l'ordre. Le Dominator passe en mode Paralysie Non-Létale. </li>
+<li> <b> Plus de 300 :</b> la personne pose un risque pour la société. Le Dominator passe en mode Élimination Létale.</li>
+</ol>
 </p>
 <p>      
 
-Selon ces niveaux, l'application réagit différemment : 
-Moins de 100 : un message affiche ceci : "Votre couleur est *nom de la couleur*, votre teinte est claire. Passez une bonne journée."
-Entre 100 et 299 : "Votre facteur criminel est au dessus de la normale. Nous vous recommandons de suivre une thérapie dans les plus brefs délais. "
-Plus de 300 : "Votre facteur est hors normes. Les autorités compétentes ont été prévenues de votre localisation. Veuillez rester où vous êtes." </p>
+Selon ces niveaux, l'application réagit différemment : <ol>
+<li> <b> Moins de 100 :</b> "Votre couleur est <i> <font color="pink"> nom de la couleur </font> </i>, votre teinte est claire. Passez une bonne journée." </li>
+<li> <b> Entre 100 et 299 :</b> "Votre facteur criminel est au dessus de la normale. Nous vous recommandons de suivre une thérapie dans les plus brefs délais. "</li>
+<li> <b> Plus de 300 :</b> "Votre facteur est hors normes. Les autorités compétentes ont été prévenues de votre localisation. Veuillez rester où vous êtes." </li>
+</ol>
+ </p> 
 
 <h2 id ="fonct"> Fonctionnement</h2>
 <hr> </hr>
 
 <p>      
 
-Pour le moment, mon système fonctionne avec Processing, mais je ne parviens pas à l'exporter en application. C'est pourquoi je recommences ce projet en projet android.studio. J'ai déjà le code qui permet d'accéder à la caméra de mon appareil.</p>
+Pour le moment, mon système fonctionne avec Processing, mais je ne parviens pas à l'exporter en application. C'est pourquoi je recommences ce projet en projet android.studio.</o> </i> <a id ="menubutton" href="#3"> (3) </a> J'ai déjà le code qui permet d'accéder à la caméra de mon appareil. </p>
 
-      
+<h3 id ="processing"> Code Processing</h3>
+<hr> </hr>
 
+<p>Voici le code Processing qui fonctionne grosso-modo comme j'en ai envie:</p>
 
+<p> <b> CameraAndroid.pde </b></p> 
+  <ul id ="tableau">   
+<p>
+/*boolean sketchFullScreen() {   //permet de lancer le sketch en mode plein écran <br>
+  return true;<br>
+}*/<br>
+<p>
 
+import processing.video.*;<br>
+Capture cam;<br>
+<p>
+import org.gicentre.processing.utils.stat.*;    // For chart classes.<br>
+BarChart barChart;<br>
+<p>
+import g4p_controls.*;<br>
+GImageButton btnSave, btnPause, btnStart, btnQuit;<br>
+GLabel lblOut;<br>
+long timer;<br>
+int number = 0;<br>
+<p>
+
+//setup<br>
+void setup() {<br>
+<p>
+  size(displayWidth, displayHeight);<br>
+  cam = new Capture(this, 1280, 720);<br>
+  cam.start();<br>
+  colorMode(HSB, 1);<br>
+  background(1);<br>
+  noStroke();<br>
+  smooth ();<br>
+  PFont font = createFont("Helvetica", 11);<br>
+  textFont(font, 10);<br>
+  barChart = new BarChart(this);<br>
+  String[] files;<br>
+<p>
+
+files = new String[] { <br>
+    "stopOff.png", "stopOver.png", "stopDown.png"<br>
+  };<br>
+  btnPause = new GImageButton(this, 20, 20, files);<br>
+<br>
+  files = new String[] { <br>
+    "saveOff.png", "saveOver.png", "saveDown.png"<br>
+  };<br>
+  btnSave = new GImageButton(this, 20, 150, files);<br>
+ <br>
+    files = new String[] { <br>
+      "startOff.png", "startOver.png", "startDown.png"<br>
+  };<br>
+  btnStart = new GImageButton(this, 20, 280, files);<br>
+ <br>
+  files = new String[] { <br>
+    "quitOff.png", "quitOver.png", "quitDown.png"<br>
+  };<br>
+  btnQuit = new GImageButton(this, 20, 410, files);<br>
+<br>
+<p>
+  lblOut = new GLabel(this, 10, 190, 560, 20, "");<br>
+  lblOut.setTextAlign(GAlign.CENTER, null);<br>
+  timer = millis() - 5000;<br>
+<p>
+}<br>
+
+<p>
+void draw() {<br>
+<p>
+  if (cam.available()) {<br>
+ <p>   
+    cam.read();<br>
+    image(cam, 0, 0, displayWidth, displayHeight );<br>
+    cam.loadPixels();<br>
+    int pixelValue = cam.get(displayWidth/2, displayHeight/2); //le pixel selectioné est au centre de l'écran<br>
+    float h = hue(pixelValue);<br>
+    float s = saturation(pixelValue);<br>
+    float b = brightness(pixelValue);<br>
+<p>
+    for (int i=0; i<100; i+=1) {<br>
+      println ("h=", h );<br>
+      println ("s=", s);<br>
+      println ("b=", b);<br>
+
+      <p>
+      barChart.setData(new float[] {h, s, b});<br>
+      barChart.setBarLabels(new String[] {"Hue", "Saturation", "Brightness"});<br>
+      barChart.draw(displayWidth/2, displayHeight/8, displayWidth/2, displayHeight/2);<br>
+      barChart.setBarColour(color(h, s, b));<br>
+      barChart.showValueAxis(true); <br>
+      barChart.showCategoryAxis(true);<br>
+
+      <p>
+      for (int x = 0; x < cam.width; x++) {<br>
+      <p>
+        //condition couleur creme<br>
+        if ( ((h > 0.1) && (h < 0.2)) && ((s > 0.1) && (s < 0.2)) && ((b > 0.5) && (b < 0.6)) ) {<br>
+          fill(h, s, b);<br>
+          println ("creme");<br>
+        }<br>
+<p>
+        //condition couleur bleu fade<br>
+        else if ( ((h > 0.4) && (h < 0.5)) && ((s > 0.1) && (s < 0.2)) && ((b > 0.5) && (b < 0.6)) ) {<br>
+          fill(h, s, b);<br>
+          println ("bleu fade");<br>
+        }    <br>
+<p>
+        //condition couleur bleu<br>
+        else if ( ((h > 0.5) && (h < 0.6)) && ((s > 0.6) && (s < 0.7)) && ((b > 0.7) && (b < 0.8)) ) {<br>
+          fill(h, s, b);<br>
+          println ("bleu");<br>
+        }  <br>
+<p>
+        //condition couleur bleu foncé<br>
+        else if ( ((h > 0.5) && (h < 0.6)) && ((s > 0.5) && (s < 0.6)) && ((b > 0.5) && (b < 0.6)) ) {<br>
+          fill(h, s, b);<br>
+          println ("bleu foncé");<br>
+        }  <br>
+<p>
+        //condition couleur vert clair<br>
+        else if ( ((h > 0.2) && (h < 0.3)) && ((s > 0.3) && (s < 0.4)) && ((b > 0.4) && (b < 0.5)) ) {<br>
+          fill(h, s, b);<br>
+          println ("vert clair");<br>
+        }     <br>
+<p>
+        //condition couleur vert foncé<br>
+        else if ( ((h > 0.4) && (h < 0.5)) && ((s > 0.2) && (s < 0.3)) && ((b > 0.2) && (b < 0.3)) ) {<br>
+          fill(h, s, b);<br>
+          println ("vert foncé");<br>
+        }<br>
+<p>
+        //condition couleur orange<br>
+        else if ( ((h > 0.0) && (h < 0.1)) && ((s > 0.4) && (s < 0.5)) && ((b > 0.65) && (b < 0.75)) ) {<br>
+          fill(h, s, b);<br>
+          println ("orange");<br>
+        }<br>
+<p>
+        //condition couleur rose<br>
+        else if ( ((h > 0.9) && (h < 1)) && ((s > 0.7) && (s < 0.8)) && ((b > 0.7) && (b < 0.8)) ) {<br>
+          fill(h, s, b);<br>
+          println ("rose");<br>
+        }<br>
+      }
+    }
+  }
+  <p>
+  // Only display button info for 4 seconds<br>
+  if (millis() - timer > 5000) {<br>
+    lblOut.setText("CLICK ON A BUTTON");<br>
+  }<br>
+  <p>
+}<br>
+<p>
+// When a button has been clicked give information about the button
+void handleButtonEvents(GImageButton button, GEvent event) { 
+<p>  
+    if (button == btnPause) {<br>
+    lblOut.setText("Votre facteur criminel est mis en pause, désirez-vous l'enegistrer?");<br>
+    cam.stop ();<br>
+    println ("pause");<br>
+    timer = millis();<br>
+  }<br>
+  <p>
+   if (button == btnSave) {<br>
+    lblOut.setText( "Votre facteur criminel a été enegistré d ans notre base de données");<br>
+    save("facteur_criminel"+ nf(number,4)+ ".png");<br>
+    number++;<br>
+    println ("save");<br>
+    timer = millis();<br>
+  }<br>
+  <p>
+  if (button == btnStart) {<br>
+    lblOut.setText ("Réinitialisation du scan de votre facteur criminel");<br>
+    cam.start ();<br>
+    println ("start");<br>
+    timer = millis (); <br>
+  }<br>
+  <p>
+  if (button == btnQuit) {<br>
+    exit ();<br>
+    println ("quit");<br>
+    timer = millis (); <br>
+  }<br>
+}
+</p>
+
+</ul>  
+
+<h3 id ="android"> Code Android</h3>
+<hr> </hr>
+
+<p> Android.studio fonctionne à partir de 3 fichiers: le <o> <b> activity_main.xml </b> </o> qui détermine le design de l'application. Le <o> <b>MainActivity.java </b> </o> qui définit ce que l'application fait. Et le <o> <b> AndroidManifest.xml </b> </o> qui dit à l'application quelles fonctionalités de l'appareil elle peut (et doit) utiliser. </p>
+
+<p> <b id ="main"> activity_main.xml</b></p> 
+
+  <ul id ="tableau">  
+<p>
+
+ &lt;?xml version="1.0" encoding="utf-8"?&gt; <br>
+<p>
+ &lt;FrameLayout<br>
+    xmlns:android="http://schemas.android.com/apk/res/android"<br>
+    xmlns:tools="http://schemas.android.com/tools"<br>
+    android:layout_width="match_parent"<br>
+    android:layout_height="match_parent"<br>
+    tools:context=".MainActivity"&gt; <br/>
+
+<p>
+    &lt;FrameLayout<br>
+        android:id="@+id/camera_view"<br>
+        android:layout_width="match_parent"<br>
+        android:layout_height="match_parent"&gt;<br>
+<p>
+
+     &lt;/FrameLayout><br>
+<p>
+     &lt;ImageButton<br>
+        android:layout_width="wrap_content"<br>
+        android:layout_height="wrap_content"<br>
+        android:id="@+id/imgClose"<br>
+        android:layout_gravity="right|top"<br>
+        android:background="@android:drawable/ic_menu_close_clear_cancel"<br>
+        android:padding="20dp"/&gt; <br>
+
+<p>
+ &lt;/FrameLayout &gt;<br>
+
+</ul>
+
+<p> <b id ="activity"> MainActivity.java </b></p> 
+  <ul id ="tableau">  
+<p>
+
+package com.example.utilisateur.camera;</p> 
+
+import android.support.v7.app.AppCompatActivity;<br>
+import android.os.Bundle;<br>
+private SurfaceHolder mHolder;<br>
+private Camera mCamera;</p> 
+
+public class MainActivity extends AppCompatActivity {<br>
+<br>
+    @Override<br>
+    protected void onCreate(Bundle savedInstanceState) {<br>
+        super.onCreate(savedInstanceState);<br>
+        setContentView(R.layout.activity_main);<br>
+    }<br>
+}</p> 
+
+public class CameraView extends SurfaceView implements SurfaceHolder.Callback{<br>
+<br>
+    public CameraView(Context context, Camera camera){<br>
+        super(context);<br>
+    }
+<br>
+    @Override<br>
+    public void surfaceCreated(SurfaceHolder surfaceHolder) {<br>
+
+    }<br>
+<br>
+    @Override<br>
+    public void surfaceChanged(SurfaceHolder surfaceHolder, int i, int i2, int i3) {<br>
+
+    }<br>
+<br>
+    @Override<br>
+    public void surfaceDestroyed(SurfaceHolder surfaceHolder) {<br>
+
+    }<br>
+}</p> 
+    public CameraView(Context context, Camera camera){<br>
+    <br>
+        super(context);<br>
+
+        mCamera = camera;<br>
+        mCamera.setDisplayOrientation(90);<br>
+        <br>
+        //get the holder and set this class as the callback, so we can get camera data here<br>
+        mHolder = getHolder();<br>
+        mHolder.addCallback(this);<br>
+        mHolder.setType(SurfaceHolder.SURFACE_TYPE_NORMAL);<br>
+    }</p> 
+
+</ul>
+
+<p> <b id ="manifest"> AndroidManifest.xml </b></p> 
+  <ul id ="tableau">  
+<p>
+
+ &lt;?xml version="1.0" encoding="utf-8"?&gt<br>
+ <br>
+ &lt;manifest xmlns:android="http://schemas.android.com/apk/res/android"<br>
+    package="com.example.utilisateur.camera"&gt<p>
+
+     &lt;application<br>
+        android:allowBackup="true"<br>
+        android:icon="@mipmap/ic_launcher"<br>
+        android:label="@string/app_name"<br>
+        android:roundIcon="@mipmap/ic_launcher_round"<br>
+        android:supportsRtl="true"<br>
+        android:theme="@style/AppTheme"&gt<br>
+        <br>
+         &lt;activity android:name=".MainActivity"&gt<br>
+             &lt;intent-filter&gt<br>
+                 &lt;action android:name="android.intent.action.MAIN" /&gt<p>
+
+                 &lt;category android:name="android.intent.category.LAUNCHER" /&gt<br>
+                 &lt;uses-permission android:name="android.permission.CAMERA" /&gt<br>
+                 &lt;uses-feature android:name="android.hardware.camera" /&gt<p>
+             &lt;/intent-filter&gt<br>
+         &lt;/activity&gt<br>
+     &lt;/application&gt<p>
+
+ &lt;/manifest&gt<p>
 
 
     </div>
@@ -118,8 +433,8 @@ Pour le moment, mon système fonctionne avec Processing, mais je ne parviens pas
  
 <ul> 
   <li> <a id= "1"> (1) </a> <a href = "https://fr.wikipedia.org/wiki/Psycho-Pass">  https://fr.wikipedia.org/wiki/Psycho-Pass </a>  </li>
-  <li> <a id =""> () </a> <a href =""> </a> </li>
-<li> <a id =""> () </a> <a href =""> </a> </li>
+  <li> <a id ="2"> (2) </a> <a href ="https://vignette.wikia.nocookie.net/psychopass/images/6/6e/Dominator.png/revision/latest?cb=20141113122320">https://vignette.wikia.nocookie.net/psychopass/images/6/6e/Dominator.png/revision/latest?cb=20141113122320 </a> </li>
+<li> <a id ="3"> (3) </a> <a href ="https://developer.android.com/studio/index.html">https://developer.android.com/studio/index.html </a> </li>
 <li> <a id =""> () </a> <a href =""> </a> </li>
 <li> <a id =""> () </a> <a href =""> </a> </li>
 <li> <a id =""> () </a> <a href =""> </a> </li>
@@ -144,7 +459,14 @@ Pour le moment, mon système fonctionne avec Processing, mais je ne parviens pas
   <li> <a id ="menubutton" href="#intro"> Intro </a> </li>
   <li> <a id ="menubutton" href="#but"> But </a> </li>
   <li> <a id ="menubutton" href="#niv">  Niveaux </a> </li>
-  <li> <a id ="menubutton" href="#fonct">  Fonctionnement  </a> </li>
+  <li> <a id ="menubutton" href="#fonct">  Fonctionnement  </a> 
+        <li id = "ss"> <a id ="menubutton" href="#processing"> Code Processing </a> </li>  
+        <li id = "ss"> <a id ="menubutton" href="#android"> Code Android </a> 
+              <li id = "sss"> <a id ="menubutton" href="#main"> activity_main.xml </a>
+              <li id = "sss"> <a id ="menubutton" href="#activity">  MainActivity.java  </a>    
+              <li id = "sss"> <a id ="menubutton" href="#manifest">  AndroidManifest.xml  </a> </li>
+        <li id = "ss"> <a id ="menubutton" href="#"> Autre </a> </li>  </li>
+
   <li> <a id ="menubutton" href="#">  </a> </li>
 </ul>
 
